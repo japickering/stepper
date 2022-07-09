@@ -1,5 +1,26 @@
 .App {
+   margin: 10px;
   text-align: center;
+}
+
+h1 {
+   color: #333;
+}
+
+.stepper {
+   width: 100%;
+}
+
+ul {
+   list-style: none;
+   display: flex;
+   justify-content: center;
+   justify-items: space-between;
+}
+
+ul li {
+   margin: 0;
+   padding: 0;
 }
 
 button {
@@ -7,22 +28,39 @@ button {
    margin: 10px;
    padding: 8px;
    border: 1px solid whitesmoke;
-   text-align: center;
    cursor: pointer;
 }
 
 .btn-step {
-   width: 45px;
-   height: 45px;
+   width: 40px;
+   height: 40px;
    background-color: #AAA;
    color: #E1E1E1;
    border: 1px solid #E1E1E1;
    border-radius: 50%;
 }
 
-.active,
-.active:hover,
-.active:focus {
+.btn-step.active,
+.btn-step.active:hover,
+.btn-step.active:focus {
     background-color: green;
     color: #fff;
+}
+
+.btn-step span {
+   font-size: 14px;
+   text-align: center;
+}
+
+.label {
+    background-color: transparent;
+    color: #C1C1C1;
+    text-align: center;
+}
+
+.label.active,
+.label.active:hover,
+.label.active:focus {
+    background-color: transparent;
+    color: #333;
 }
