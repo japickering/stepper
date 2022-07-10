@@ -23,22 +23,48 @@ export default function StepperNav() {
   const [menu, setMenu] = useState(defaultMenu);
 
   useEffect(() => {
-   switch (menuType) {
+    switch (menuType) {
       case 1:
-         setMenu(defaultMenu);
-         break;
+        setMenu(defaultMenu);
+        break;
       case 2:
-         setMenu(menuTapsActive);
-         break;
+        setMenu(menuTapsActive);
+        break;
       case 3:
-         setMenu(menuAccessoriesActive);
-         break;
-   
+        setMenu(menuAccessoriesActive);
+        break;
       default:
-         setMenu(defaultMenu);
-         break;
-   }
+        setMenu(defaultMenu);
+        break;
+    }
   }, [menuType]);
+
+  const renderBarsByMenuState = (menuType: number, id: number) => {
+    switch (menuType) {
+      case 1:
+        if (id === 1 || id === 2) {
+          return <div className='bar'></div>;
+        } else {
+          return <div className='bar hidden'></div>;
+        }
+      case 2:
+        if (id === 1) {
+          return <div className='bar active'></div>;
+        } else if (id === 2) {
+          return <div className='bar'></div>;
+        } else {
+          return <div className='bar hidden'></div>;
+        }
+      case 3:
+        if (id === 1 || id === 2) {
+          return <div className='bar active'></div>;
+        } else {
+          return <div className='bar hidden'></div>;
+        }
+      default:
+        break;
+    }
+  };
 
   return (
     <div className='stepper'>
@@ -55,6 +81,7 @@ export default function StepperNav() {
                 }}>
                 <span>{item.id}</span>
               </button>
+              {renderBarsByMenuState(menuType, item.id)}
               <div className={item.isActive ? 'label active' : 'label'}>{item.name}</div>
             </li>
           );
