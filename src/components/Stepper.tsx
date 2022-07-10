@@ -1,24 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
-const defaultMenu = [
-  { id: 1, name: 'units', isActive: true },
-  { id: 2, name: 'taps', isActive: false },
-  { id: 3, name: 'accessories', isActive: false },
-];
+interface Item {
+   id: number;
+   name: string;
+   isActive: boolean;
+}
 
-const menuTapsActive = [
-  { id: 1, name: 'units', isActive: true },
-  { id: 2, name: 'taps', isActive: true },
-  { id: 3, name: 'accessories', isActive: false },
-];
+interface StepperProps {
+   defaultMenu: Item[];
+   menuTaps: Item[];
+   menuAccessories: Item[];
+}
 
-const menuAccessoriesActive = [
-  { id: 1, name: 'units', isActive: true },
-  { id: 2, name: 'taps', isActive: true },
-  { id: 3, name: 'accessories', isActive: true },
-];
-
-export default function StepperNav() {
+export default function Stepper({ defaultMenu, menuTaps, menuAccessories }: StepperProps) {
   const [menuType, setMenuType] = useState(1);
   const [menu, setMenu] = useState(defaultMenu);
 
@@ -28,16 +22,16 @@ export default function StepperNav() {
         setMenu(defaultMenu);
         break;
       case 2:
-        setMenu(menuTapsActive);
+        setMenu(menuTaps);
         break;
       case 3:
-        setMenu(menuAccessoriesActive);
+        setMenu(menuAccessories);
         break;
       default:
         setMenu(defaultMenu);
         break;
     }
-  }, [menuType]);
+  }, [menuType, defaultMenu, menuTaps, menuAccessories]);
 
   const renderBarsByMenuState = (menuType: number, id: number) => {
     switch (menuType) {
@@ -61,7 +55,8 @@ export default function StepperNav() {
         } else {
           return <div className='bar hidden'></div>;
         }
-      default:
+       default:
+          console.error('no matching menu type');
         break;
     }
   };

@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import StepperNav from './components/StepperNav';
+import { defaultMenu, menuTaps, menuAccessories } from './config';
+import Stepper from './components/Stepper';
 
 function App() {
   return (
     <div className='App'>
-      <h1>Stepper nav</h1>
-      <StepperNav />
+      <h1>Stepper menu</h1>
+      <Stepper defaultMenu={defaultMenu} menuTaps={menuTaps} menuAccessories={menuAccessories} />
     </div>
   );
 }
