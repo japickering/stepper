@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
 interface Item {
-   id: number;
-   name: string;
-   isActive: boolean;
+  id: number;
+  name: string;
+  isActive: boolean;
 }
 
 interface StepperProps {
-   defaultMenu: Item[];
-   menuTaps: Item[];
-   menuAccessories: Item[];
+  defaultMenu: Item[];
+  menuTaps: Item[];
+  menuAccessories: Item[];
 }
 
-export default function Stepper({ defaultMenu, menuTaps, menuAccessories }: StepperProps) {
+export default function Stepper({ defaultMenu, menuTaps, menuAccessories }: StepperProps): JSX.Element {
   const [menuType, setMenuType] = useState(1);
   const [menu, setMenu] = useState(defaultMenu);
 
@@ -55,8 +55,8 @@ export default function Stepper({ defaultMenu, menuTaps, menuAccessories }: Step
         } else {
           return <div className='bar hidden'></div>;
         }
-       default:
-          console.error('no matching menu type');
+      default:
+        console.error('no matching menu type');
         break;
     }
   };

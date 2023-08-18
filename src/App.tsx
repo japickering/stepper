@@ -7,7 +7,11 @@ function App() {
   return (
     <div className='App'>
       <h1>Stepper menu</h1>
-      <Stepper defaultMenu={defaultMenu} menuTaps={menuTaps} menuAccessories={menuAccessories} />
+      <Stepper
+        defaultMenu={defaultMenu}
+        menuTaps={menuTaps}
+        menuAccessories={menuAccessories}
+      />
     </div>
   );
 }
